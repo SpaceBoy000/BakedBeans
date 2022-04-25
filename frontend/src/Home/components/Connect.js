@@ -4,9 +4,9 @@ import { styled } from "@mui/system";
 import { useAuthContext } from "../../providers/AuthProvider";
 
 const ConnectButton = styled(Button)(({ theme }) => ({
-  position: "fixed",
-  right: 48,
-  top: 48,
+  // position: "fixed",
+  // right: 48,
+  // top: 48,
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
@@ -24,18 +24,23 @@ const SmallScreenConnectButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+export function shorten(str) {
+  if (str.length < 10) return str;
+  return `${str.slice(0, 6)}...${str.slice(str.length - 4)}`;
+}
+
 export default function Connect({ responsive = true }) {
   const { address, loading, connect, disconnect } = useAuthContext();
 
   return responsive ? (
-    <ConnectButton
+    <div
       color="secondary"
-      variant="contained"
+      // variant="contained"
       disabled={loading}
       onClick={() => (address ? disconnect() : connect())}
     >
-      {address ? "Disconnect" : "Connect"}
-    </ConnectButton>
+      <span>{address ? shorten(address) : "Connect Wallet"}</span>
+    </div>
   ) : (
     <SmallScreenConnectButton
       color="secondary"

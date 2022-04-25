@@ -174,37 +174,23 @@ export default function BakeCard() {
   };
 
   return (
-    <CardWrapper>
+    <div>
       {loading && <LinearProgress color="secondary" />}
-      <CardContent>
-        <Grid
-          container
-          justifyContent="space-between"
-          alignItems="center"
-          mt={3}
-        >
-          <Typography variant="body1">Contract</Typography>
-          <Typography variant="h5">{contractBNB} BNB</Typography>
-        </Grid>
-        <Grid
-          container
-          justifyContent="space-between"
-          alignItems="center"
-          mt={3}
-        >
-          <Typography variant="body1">Wallet</Typography>
-          <Typography variant="h5">{walletBalance.bnb} BNB</Typography>
-        </Grid>
-        <Grid
-          container
-          justifyContent="space-between"
-          alignItems="center"
-          mt={3}
-        >
-          <Typography variant="body1">Your Beans</Typography>
-          <Typography variant="h5">{walletBalance.beans} BEANS</Typography>
-        </Grid>
-        <Box paddingTop={4} paddingBottom={3}>
+      <div>
+        <div className="dataRow">
+          <div className="name">Contract</div>
+          <div className="value">{contractBNB} BNB</div>
+        </div>
+        <div className="dataRow">
+          <div className="name">Wallet</div>
+          <div className="value">{walletBalance.bnb} BNB</div>
+        </div>
+        <div className="dataRow">
+          <div className="name">Your Cheese</div>
+          <div className="value">{walletBalance.beans} Cheese</div>
+        </div>
+
+        <Box >
           <Box>
             <PriceInput
               max={+walletBalance.bnb}
@@ -212,18 +198,24 @@ export default function BakeCard() {
               onChange={(value) => onUpdateBakeBNB(value)}
             />
           </Box>
-          <Box marginTop={3} marginBottom={3}>
+          <Box className="buttonBox1" marginTop={2} marginBottom={2}>
             <Button
+              className="button1"
               variant="contained"
               fullWidth
               disabled={wrongNetwork || !address || +bakeBNB === 0 || loading}
               onClick={bake}
             >
-              BAKE BEANS
+              <b>STACK CHEESE</b>
             </Button>
           </Box>
           <Divider />
-          <Grid
+          <div className="dataRow">
+            <div className="name">Your Rewards</div>
+            <div className="value">{walletBalance.rewards} BNB</div>
+          </div>
+
+          {/* <Grid
             container
             justifyContent="space-between"
             alignItems="center"
@@ -235,33 +227,35 @@ export default function BakeCard() {
             <Typography variant="h5" fontWeight="bolder">
               {walletBalance.rewards} BNB
             </Typography>
-          </Grid>
+          </Grid> */}
           <ButtonContainer container>
             <Grid item flexGrow={1} marginRight={1} marginTop={3}>
               <Button
+                className="button1"
                 variant="contained"
                 color="secondary"
                 fullWidth
                 disabled={wrongNetwork || !address || loading}
                 onClick={reBake}
               >
-                RE-BAKE
+                <b>RE-STACK</b>
               </Button>
             </Grid>
             <Grid item flexGrow={1} marginLeft={1} marginTop={3}>
               <Button
+                className="button1"
                 variant="contained"
                 color="secondary"
                 fullWidth
                 disabled={wrongNetwork || !address || loading}
                 onClick={eatBeans}
               >
-                EAT BEANS
+                <b>EAT CHEESE</b>
               </Button>
             </Grid>
           </ButtonContainer>
         </Box>
-      </CardContent>
-    </CardWrapper>
+      </div>
+    </div>
   );
 }

@@ -5,11 +5,12 @@ import { styled } from "@mui/system";
 const BnbInput = styled("input")({
   fontSize: 24,
   fontWeight: 500,
-  padding: "12px 90px 12px 16px",
-  textAlign: "right",
-  borderRadius: 0,
-  border: "1px solid #555",
-  background: "white",
+  padding: "8px 50px 8px 20px",
+  textAlign: "center",
+  color: "#feec6c",
+  borderRadius: 40,
+  border: "2px solid #0cbbfa",
+  background: "#007e79",
   width: "100%",
   outline: "none",
   "&::-webkit-outer-spin-button, &::-webkit-inner-spin-button": {
@@ -35,7 +36,8 @@ export default function PriceInput({ value, max, onChange = () => {} }) {
         top={9}
         right={18}
         fontWeight={500}
-        color="black"
+        color="#feec6c"
+        fontFamily={"mooncheese"}
       >
         BNB
       </Typography>

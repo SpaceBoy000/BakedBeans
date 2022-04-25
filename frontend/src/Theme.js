@@ -16,6 +16,7 @@ const theme = createTheme({
     fontFamily: "Montserrat",
     body1: {
       fontSize: 20,
+      color: "#49221a",
     },
     body2: {
       fontSize: 16,
@@ -28,6 +29,7 @@ const theme = createTheme({
       fontSize: 32,
     },
     h5: {
+      color: "#feec6c",
       fontSize: 24,
       fontWeight: 500,
     },

@@ -9,37 +9,57 @@ const CardWrapper = styled(Card)({
 });
 
 const Input = styled("input")(({ theme }) => ({
-  fontSize: 10,
+  fontSize: 14,
   fontWeight: 300,
-  padding: "10px 12px",
-  borderRadius: 0,
-  border: "1px solid #555",
-  background: "white",
+  padding: "5px 20px",
+  borderRadius: "40px",
+  border: "2px solid #0cbbfa",
+  backgroundColor: "transparent",
   width: "100%",
   outline: "none",
-  color: theme.palette.primary.main,
+  // color: theme.palette.primary.main,
+  color: "#e58f0e",
+  maxWidth:"70%"
 }));
+
+const copyfunc = async (text) => {
+    try {
+      const toCopy = text;
+      await navigator.clipboard.writeText(toCopy);
+      console.log('Text or Page URL copied');
+    }
+    catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+}
 
 export default function ReferralLink({ address }) {
   const link = `${window.origin}?ref=${address}`;
 
   return (
-    <CardWrapper>
-      <CardContent style={{ paddingLeft: 8, paddingRight: 8 }}>
-        <Typography gutterBottom variant="h5" textAlign="center">
-          Referral Link
-        </Typography>
+    <div className="referral">
+      <h1>Referral Link</h1>
+      <p>Earn 13% of the BNB used to stack cheese from anyone who uses your referral link</p>
+      <div class="refWrapper">
         <Input value={address ? link : ""} readOnly />
-        <Typography
-          textAlign="center"
-          variant="body2"
-          marginTop={2}
-          paddingX={3}
-        >
-          Earn 12% of the BNB used to bake beans from anyone who uses your
-          referral link
-        </Typography>
-      </CardContent>
-    </CardWrapper>
+        <div 
+          class="copyButton"
+          onClick={e => copyfunc(address ? link : "")}
+          >
+          COPY
+        </div>
+      </div>
+
+      {/* <Typography
+        textAlign="center"
+        variant="body2"
+        marginTop={2}
+        paddingX={3}
+        color="#e58f0e"
+      >
+        Earn 12% of the BNB used to bake beans from anyone who uses your
+        referral link
+      </Typography> */}
+    </div>
   );
 }

@@ -7,7 +7,7 @@ import twIcon from "../assets/TWIcon.png";
 
 export default function Footer() {
   return (
-    <Grid container justifyContent="center" spacing={2} marginTop={4}>
+    <Grid container justifyContent="right" spacing={2} marginTop={4}>
       <Grid item>
         <a href={config.scanLink} target="__blank">
           <img src={esIcon} alt="" width={48} height={48} />

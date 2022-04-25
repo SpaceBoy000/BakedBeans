@@ -14,36 +14,32 @@ const CardWrapper = styled(Card)({
 const nutritionFacts = [
   {
     label: "Daily Return",
-    value: 8,
+    value: 10,
   },
   {
     label: "APR",
-    value: "2,920",
+    value: "3,650",
   },
   {
     label: "Dev Fee",
-    value: 3,
+    value: 4.5, 
   },
 ];
 
 export default function NutritionFacts() {
   return (
-    <CardWrapper>
-      <CardContent>
-        <Typography variant="h5" borderBottom="6px solid" paddingBottom={1}>
-          Nutrition Facts
+    <div style={{width: "65%"}}>
+        <Typography variant="h5" style={{color:"#49221a", fontFamily:"mooncheese", fontSize:"25px"}}>
+          <b>Nutrition Facts</b>
         </Typography>
-        <Box paddingTop={2}>
+        <Box paddingTop={1}>
           {nutritionFacts.map((f) => (
-            <Grid container key={f.label} justifyContent="space-between">
-              <Typography variant="body1" gutterBottom>
-                {f.label}
-              </Typography>
-              <Typography gutterBottom>{f.value}%</Typography>
-            </Grid>
+            <div className="dataRow">
+              <div className="name">{f.label}</div>
+              <div className="value">{f.value}%</div>
+            </div>
           ))}
         </Box>
-      </CardContent>
-    </CardWrapper>
+    </div>
   );
 }
