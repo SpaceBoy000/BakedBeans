@@ -12,14 +12,15 @@ const Input = styled("input")(({ theme }) => ({
   fontSize: 14,
   fontWeight: 300,
   padding: "5px 20px",
-  borderRadius: "40px",
+  marginRight: "10px",
+  borderRadius: "5px",
   border: "2px solid #0cbbfa",
   backgroundColor: "transparent",
   width: "100%",
   outline: "none",
   // color: theme.palette.primary.main,
-  color: "#e58f0e",
-  maxWidth:"70%"
+  color: "yellow",
+  maxWidth:"85%"
 }));
 
 const copyfunc = async (text) => {
@@ -46,7 +47,7 @@ export default function ReferralLink({ address }) {
           class="copyButton"
           onClick={e => copyfunc(address ? link : "")}
           >
-          COPY
+            <b>COPY</b>
         </div>
       </div>
 

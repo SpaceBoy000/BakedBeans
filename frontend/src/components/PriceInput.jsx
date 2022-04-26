@@ -3,12 +3,12 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/system";
 
 const BnbInput = styled("input")({
-  fontSize: 24,
+  fontSize: 18,
   fontWeight: 500,
-  padding: "8px 50px 8px 20px",
+  padding: "8px 30px 8px 20px",
   textAlign: "center",
   color: "#feec6c",
-  borderRadius: 40,
+  borderRadius: 5,
   border: "2px solid #0cbbfa",
   background: "#007e79",
   width: "100%",
@@ -22,16 +22,10 @@ const BnbInput = styled("input")({
 
 export default function PriceInput({ value, max, onChange = () => {} }) {
   return (
-    <Box position="relative">
-      <BnbInput
-        type="number"
-        min={0}
-        max={max}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
+    <Box position="relative" style={{marginTop:"20px"}}>
+      
       <Typography
-        fontSize={24}
+        fontSize={18}
         position="absolute"
         top={9}
         right={18}
@@ -39,8 +33,16 @@ export default function PriceInput({ value, max, onChange = () => {} }) {
         color="#feec6c"
         fontFamily={"mooncheese"}
       >
-        BNB
+        BNB amount
       </Typography>
+
+      <BnbInput
+        type="number"
+        min={0}
+        max={max}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
     </Box>
   );
 }

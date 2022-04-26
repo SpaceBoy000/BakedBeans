@@ -10,6 +10,8 @@ import Divider from "@mui/material/Divider";
 import { styled } from "@mui/system";
 import { useLocation } from "react-router-dom";
 import Web3 from "web3";
+import treasuryImg from "../../assets/treasury.png"
+import profitImg from "../../assets/profit.png"
 
 import PriceInput from "../../components/PriceInput";
 import { useContractContext } from "../../providers/ContractProvider";
@@ -173,88 +175,175 @@ export default function BakeCard() {
     setLoading(false);
   };
 
+
+
   return (
     <div>
-      {loading && <LinearProgress color="secondary" />}
-      <div>
-        <div className="dataRow">
-          <div className="name">Contract</div>
-          <div className="value">{contractBNB} BNB</div>
-        </div>
-        <div className="dataRow">
-          <div className="name">Wallet</div>
-          <div className="value">{walletBalance.bnb} BNB</div>
-        </div>
-        <div className="dataRow">
-          <div className="name">Your Cheese</div>
-          <div className="value">{walletBalance.beans} Cheese</div>
-        </div>
-
-        <Box >
-          <Box>
-            <PriceInput
-              max={+walletBalance.bnb}
-              value={bakeBNB}
-              onChange={(value) => onUpdateBakeBNB(value)}
-            />
-          </Box>
-          <Box className="buttonBox1" marginTop={2} marginBottom={2}>
-            <Button
-              className="button1"
-              variant="contained"
-              fullWidth
-              disabled={wrongNetwork || !address || +bakeBNB === 0 || loading}
-              onClick={bake}
-            >
-              <b>STACK CHEESE</b>
-            </Button>
-          </Box>
-          <Divider />
-          <div className="dataRow">
-            <div className="name">Your Rewards</div>
-            <div className="value">{walletBalance.rewards} BNB</div>
+      <div className="auxContent">
+        <div className="box leftBox contractInfoCard" >
+          <div style={{display: "flex"}}>
+            <img src={treasuryImg}></img>
+            <div>
+              <h5>Contract balance</h5>
+              <h6>2000 AVAX</h6>
+            </div>
           </div>
+          <Box paddingTop={1}>
+              <div className="dataRow">
+                <div className="name">Participants</div>
+                <div className="value">2527 investors</div>
+              </div>
+              <div className="dataRow">
+                <div className="name">Fishers hired</div>
+                <div className="value">11654 times</div>
+              </div>
+          </Box>
+        </div>
+        <div className="box leftBox profitInfoCard">
+          <div style={{display: "flex"}}>
+            <img src={profitImg}></img>
+            <div>
+              <h5>Daily ROI</h5>
+              <h6>12 %</h6>
+            </div>
+          </div>
+          <Box paddingTop={1}>
+            <div className="dataRow">
+              <div className="name">APR</div>
+              <div className="value">4380 %</div>
+            </div>
+            <div className="dataRow">
+              <div className="name">Devtax</div>
+              <div className="value">4 %</div>
+            </div>
+          </Box>
+        </div>
+      </div>
+      <div className="mainContent">
+        <div className="box leftBox">
+          {loading && <LinearProgress color="secondary" />}
+          <Typography variant="h5" style={{color:"white", fontFamily:"sans-serif", fontSize:"25px"}}>
+            <b>Hire Stashers</b>
+          </Typography>
+          <div>
+            {/* <div className="dataRow">
+              <div className="name">Contract</div>
+              <div className="value">{contractBNB} BNB</div>
+            </div> */}
+            <div style={{color:"blue", marginTop:"20px"}}>Your stats</div>
+            <div className="dataRow">
+              <div className="name">Wallet</div>
+              <div className="value">{walletBalance.bnb} BNB</div>
+            </div>
+            <div className="dataRow">
+              <div className="name">Your Stashers</div>
+              <div className="value">{walletBalance.beans} </div>
+            </div>
 
-          {/* <Grid
-            container
-            justifyContent="space-between"
-            alignItems="center"
-            mt={3}
-          >
-            <Typography variant="body1" fontWeight="bolder">
-              Your Rewards
-            </Typography>
-            <Typography variant="h5" fontWeight="bolder">
-              {walletBalance.rewards} BNB
-            </Typography>
-          </Grid> */}
+            <Box >
+              <Box>
+                <PriceInput
+                  max={+walletBalance.bnb}
+                  value={bakeBNB}
+                  onChange={(value) => onUpdateBakeBNB(value)}
+                />
+              </Box>
+              <Box marginTop={2} marginBottom={0}>
+                <Button
+                  className="button1"
+                  color="secondary"
+                  variant="contained"
+                  fullWidth
+                  disabled={wrongNetwork || !address || +bakeBNB === 0 || loading}
+                  onClick={bake}
+                >
+                  <b>Hire</b>
+                </Button>
+              </Box>
+              {/* <Divider /> */}
+              {/* <div className="dataRow">
+                <div className="name">Your Rewards</div>
+                <div className="value">{walletBalance.rewards} BNB</div>
+              </div> */}
+
+              {/* <ButtonContainer container>
+                <Grid item flexGrow={1} marginRight={1} marginTop={3}>
+                  <Button
+                    className="button1"
+                    variant="contained"
+                    color="secondary"
+                    fullWidth
+                    disabled={wrongNetwork || !address || loading}
+                    onClick={reBake}
+                  >
+                    <b>RE-STACK</b>
+                  </Button>
+                </Grid>
+                <Grid item flexGrow={1} marginLeft={1} marginTop={3}>
+                  <Button
+                    className="button1"
+                    variant="contained"
+                    color="secondary"
+                    fullWidth
+                    disabled={wrongNetwork || !address || loading}
+                    onClick={eatBeans}
+                  >
+                    <b>EAT CHEESE</b>
+                  </Button>
+                </Grid>
+              </ButtonContainer> */}
+            </Box>
+          </div>
+        </div>
+        <div className="box leftBox">
+          <Typography variant="h5" style={{color:"white", fontFamily:"sans-serif", fontSize:"25px"}}>
+            <b>Your Rewards</b>
+          </Typography>
+          <div>
+            <div style={{color:"blue", marginTop:"20px"}}>Re-hire</div>
+            <div className="dataRow">
+              <div className="name">65% chance</div>
+              <div className="value"> BNB</div>
+            </div>
+            <div className="dataRow">
+              <div className="name">35% chance</div>
+              <div className="value"> BNB</div>
+            </div>
+          </div>
+          <div style={{marginTop:"20px"}}>
+            <div style={{color:"blue", marginTop:"20px"}}>Sell</div>
+            <div className="dataRow">
+              <div className="name">100% chance</div>
+              <div className="value"> BNB</div>
+            </div>
+          </div>
           <ButtonContainer container>
-            <Grid item flexGrow={1} marginRight={1} marginTop={3}>
-              <Button
-                className="button1"
-                variant="contained"
-                color="secondary"
-                fullWidth
-                disabled={wrongNetwork || !address || loading}
-                onClick={reBake}
-              >
-                <b>RE-STACK</b>
-              </Button>
-            </Grid>
-            <Grid item flexGrow={1} marginLeft={1} marginTop={3}>
-              <Button
-                className="button1"
-                variant="contained"
-                color="secondary"
-                fullWidth
-                disabled={wrongNetwork || !address || loading}
-                onClick={eatBeans}
-              >
-                <b>EAT CHEESE</b>
-              </Button>
-            </Grid>
+              <Grid item flexGrow={1} marginRight={1} marginTop={3}>
+                <Button
+                  className="button1"
+                  variant="contained"
+                  color="secondary"
+                  fullWidth
+                  disabled={wrongNetwork || !address || loading}
+                  onClick={reBake}
+                >
+                  <b>RE-HIRE</b>
+                </Button>
+              </Grid>
+              <Grid item flexGrow={1} marginLeft={1} marginTop={3}>
+                <Button
+                  className="button1"
+                  variant="contained"
+                  color="secondary"
+                  fullWidth
+                  disabled={wrongNetwork || !address || loading}
+                  onClick={eatBeans}
+                >
+                  <b>SELL</b>
+                </Button>
+              </Grid>
           </ButtonContainer>
-        </Box>
+        </div>
       </div>
     </div>
   );

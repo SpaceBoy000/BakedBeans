@@ -74,17 +74,17 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
 
     try {
-      let web3 = new Web3(Web3.givenProvider);
+      // let web3 = new Web3(Web3.givenProvider);
 
-      if (!web3.currentProvider) {
-        setSnackbar({
-          type: "error",
-          message: '"No provider was found"',
-        });
-        return;
-      }
+      // if (!web3.currentProvider) {
+      //   setSnackbar({
+      //     type: "error",
+      //     message: '"No provider was found"',
+      //   });
+      //   return;
+      // }
       const provider = await web3Modal.connect();
-      web3 = new Web3(provider);
+      let web3 = new Web3(provider);
       subscribeProvider(provider);
 
       const accounts = await web3.eth.getAccounts();
